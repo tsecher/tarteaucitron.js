@@ -192,7 +192,6 @@ var tarteaucitron = {
     },
     "load": function () {
         "use strict";
-        debugger;
         var cdn = tarteaucitron.cdn,
           language = tarteaucitron.getLanguage(),
           useJSDelivrMinifiedJS = (cdn.indexOf('cdn.jsdelivr.net') >= 0),
