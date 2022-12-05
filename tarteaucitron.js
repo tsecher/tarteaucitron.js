@@ -8,6 +8,7 @@ window.tarteaucitronExpireInDay = window.tarteaucitronExpireInDay || true;
 window.timeExpire = window.timeExpire || 31536000000;
 window.tarteaucitronProLoadServices;
 window.tarteaucitronNoAdBlocker = window.tarteaucitronNoAdBlocker || false;
+window.tateaucitronDoNotLoadDefaultServices = window.tateaucitronDoNotLoadDefaultServices || false
 
 var scripts = document.getElementsByTagName('script'),
   path = scripts[scripts.length - 1].src.split('?')[0],
@@ -265,8 +266,8 @@ var tarteaucitron = {
             if(window.tarteaucitronCustomText !== ''){
                 tarteaucitron.lang = tarteaucitron.AddOrUpdate(tarteaucitron.lang, window.tarteaucitronCustomText);
             }
-            tarteaucitron.addInternalScript(pathToServices, '', function () {
 
+            function initPopup(){
                 // css for the middle bar TODO: add it on the css file
                 if (tarteaucitron.orientation === 'middle') {
                     var customThemeMiddle = document.createElement('style'),
@@ -775,7 +776,16 @@ var tarteaucitron = {
                     }
                 }, 500);
 
-            });
+            };
+
+            if( window.tateaucitronDoNotLoadDefaultServices ){
+                initPopup();
+            }
+            else {
+                tarteaucitron.addInternalScript(pathToServices, '', function () {
+                    initPopup();
+                });
+            }
         });
     },
     "addService": function (serviceId) {
