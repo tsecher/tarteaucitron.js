@@ -1,5 +1,5 @@
 /*global tarteaucitron */
-tarteaucitron.lang = {
+export const lang = {
 
     "middleBarHead": "☝ 🍪",
     "adblock": "Bonjorn! Aqueste site jòga la transparéncia e vos dòna la possibilitat de causir los servicis tèrces a activar.",

@@ -1,5 +1,5 @@
 /*global tarteaucitron */
-tarteaucitron.lang = {
+export const lang = {
     "middleBarHead": "☝ 🍪",
     "adblock": "Hei! Tämä sivusto antaa sinun valita ja hallita kolmansien osapuolten asettamia evästeitä.",
     "adblock_call": "Estä adblocker muuttaaksesi asetuksia.",

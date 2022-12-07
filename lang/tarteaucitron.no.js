@@ -1,5 +1,5 @@
 /*global tarteaucitron */
-tarteaucitron.lang = {
+export const lang = {
 	"middleBarHead" : "☝ 🍪",
 	"adblock"       : "Hei! Dette nettstedet er gjennomsiktig og lar deg kontrollere hvilke tredjeparts tjenester du vil tillate.",
 	"adblock_call"  : "For å gjøre endringer, vær så snill å deaktivere annonse-blokkering.",

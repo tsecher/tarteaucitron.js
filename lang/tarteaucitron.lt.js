@@ -1,5 +1,5 @@
 /*global tarteaucitron */
-tarteaucitron.lang = {
+export const lang = {
     "middleBarHead": "☝ 🍪",
     "adblock": "Sveiki! Ši svetainė veikia skaidriai ir leidžia pasirinkti trečiosios šalies paslaugas, kurias norite leisti.",
     "adblock_call": "Norėdami pradėti taikyti, išjunkite ,Adblocker",

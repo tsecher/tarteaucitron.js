@@ -1,5 +1,5 @@
 /*global tarteaucitron */
-tarteaucitron.lang = {
+export const lang = {
     "middleBarHead": "☝ 🍪",
     "adblock": "Hola! Aquest lloc web és transparent i et dóna l'opció d'activar els serveis de tercers",
     "adblock_call": "Si us plau desactiva la teva AdBlocker per començar a personalitzar els serveis.",

@@ -9,6 +9,7 @@ window.timeExpire = window.timeExpire || 31536000000;
 window.tarteaucitronProLoadServices;
 window.tarteaucitronNoAdBlocker = window.tarteaucitronNoAdBlocker || false;
 window.tateaucitronDoNotLoadDefaultServices = window.tateaucitronDoNotLoadDefaultServices || false
+window.tateaucitronDoNotLoadDefaultLanguageFile = window.tateaucitronDoNotLoadDefaultLanguageFile || false
 
 var scripts = document.getElementsByTagName('script'),
   path = scripts[scripts.length - 1].src.split('?')[0],
@@ -261,7 +262,7 @@ var tarteaucitron = {
             document.getElementsByTagName('head')[0].appendChild(linkElement);
         }
         // Step 2: load language and services
-        tarteaucitron.addInternalScript(pathToLang, '', function () {
+        function onLanguageLoad() {
 
             if(window.tarteaucitronCustomText !== ''){
                 tarteaucitron.lang = tarteaucitron.AddOrUpdate(tarteaucitron.lang, window.tarteaucitronCustomText);
@@ -782,11 +783,16 @@ var tarteaucitron = {
                 initPopup();
             }
             else {
-                tarteaucitron.addInternalScript(pathToServices, '', function () {
-                    initPopup();
-                });
+                tarteaucitron.addInternalScript(pathToServices, '', initPopup);
             }
-        });
+        }
+
+        if (window.tateaucitronDoNotLoadDefaultLanguageFile){
+            onLanguageLoad();
+        }
+        else {
+            tarteaucitron.addInternalScript(pathToLang, '', onLanguageLoad);
+        }
     },
     "addService": function (serviceId) {
         "use strict";

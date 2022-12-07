@@ -1,5 +1,5 @@
 /*global tarteaucitron */
-tarteaucitron.lang = {
+export const lang = {
     "middleBarHead": "☝ 🍪",
     "adblock": "Szia! Ez a webhely átlátható, és lehetővé teszi a kívánt harmadik fél szolgáltatásainak kiválasztását",
     "adblock_call": "A testreszabás megkezdéséhez állítsd le az adblockert, kérlek.",
