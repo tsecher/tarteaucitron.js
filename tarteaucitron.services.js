@@ -2207,8 +2207,8 @@ export const gajs = {
         "use strict";
         window._gaq = window._gaq || [];
         window._gaq.push(['_setAccount', window.tarteaucitron?.user?.gajsUa]);
-        if (timeExpire !== undefined) {
-            _gaq.push(['_setVisitorCookieTimeout', timeExpire]);
+        if (window.timeExpire !== undefined) {
+            window._gaq.push(['_setVisitorCookieTimeout', window.timeExpire]);
         }
 
         if (window.tarteaucitron?.user?.gajsAnonymizeIp) {
@@ -2255,12 +2255,12 @@ export const analytics = {
         };
         window.ga.l = new Date();
         window.tarteaucitron.addScript('https://www.google-analytics.com/analytics.js', '', function () {
-            var uaCreate = { 'cookieExpires': (timeExpire !== undefined) ? timeExpire : 34128000 };
+            var uaCreate = { 'cookieExpires': (window.timeExpire !== undefined) ? window.timeExpire : 34128000 };
             window.tarteaucitron.extend(uaCreate, window.tarteaucitron?.user?.analyticsUaCreate || {});
-            ga('create', window.tarteaucitron?.user?.analyticsUa, uaCreate);
+            window.ga('create', window.tarteaucitron?.user?.analyticsUa, uaCreate);
 
             if (window.tarteaucitron?.user?.analyticsAnonymizeIp) {
-                ga('set', 'anonymizeIp', true);
+                window.ga('set', 'anonymizeIp', true);
             }
 
             if (typeof window.tarteaucitron?.user?.analyticsPrepare === 'function') {
@@ -2268,9 +2268,9 @@ export const analytics = {
             }
 
             if (window.tarteaucitron?.user?.analyticsPageView) {
-                ga('send', 'pageview', window.tarteaucitron?.user?.analyticsPageView);
+                window.ga('send', 'pageview', window.tarteaucitron?.user?.analyticsPageView);
             } else {
-                ga('send', 'pageview');
+                window.ga('send', 'pageview');
             }
 
             if (typeof window.tarteaucitron?.user?.analyticsMore === 'function') {
@@ -2301,11 +2301,11 @@ export const googleads = {
         "use strict";
         window.dataLayer = window.dataLayer || [];
         window.tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + window.tarteaucitron?.user?.googleadsId, '', function () {
-            window.gtag = function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            var additional_config_info = (timeExpire !== undefined) ? {'anonymize_ip': true, 'cookie_expires': timeExpire / 1000} : {'anonymize_ip': true};
+            window.gtag = function gtag() { window.dataLayer.push(arguments); }
+            window.gtag('js', new Date());
+            var additional_config_info = (window.timeExpire !== undefined) ? {'anonymize_ip': true, 'cookie_expires': window.timeExpire / 1000} : {'anonymize_ip': true};
 
-            gtag('config', window.tarteaucitron?.user?.googleadsId, additional_config_info);
+            window.gtag('config', window.tarteaucitron?.user?.googleadsId, additional_config_info);
 
             if (typeof window.tarteaucitron?.user?.googleadsMore === 'function') {
                 window.tarteaucitron?.user?.googleadsMore();
@@ -2335,14 +2335,14 @@ export const gtag = {
         "use strict";
         window.dataLayer = window.dataLayer || [];
         window.tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + window.tarteaucitron?.user?.gtagUa, '', function () {
-            window.gtag = function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            var additional_config_info = (timeExpire !== undefined) ? {'anonymize_ip': true, 'cookie_expires': timeExpire / 1000} : {'anonymize_ip': true};
+            window.gtag = function gtag() { window.dataLayer.push(arguments); }
+            window.gtag('js', new Date());
+            var additional_config_info = (window.timeExpire !== undefined) ? {'anonymize_ip': true, 'cookie_expires': window.timeExpire / 1000} : {'anonymize_ip': true};
 
             if (window.tarteaucitron?.user?.gtagCrossdomain) {
-                gtag('config', window.tarteaucitron?.user?.gtagUa, additional_config_info, { linker: { domains: window.tarteaucitron?.user?.gtagCrossdomain, } });
+                window.gtag('config', window.tarteaucitron?.user?.gtagUa, additional_config_info, { linker: { domains: window.tarteaucitron?.user?.gtagCrossdomain, } });
             } else {
-                gtag('config', window.tarteaucitron?.user?.gtagUa, additional_config_info);
+                window.gtag('config', window.tarteaucitron?.user?.gtagUa, additional_config_info);
             }
 
             if (typeof window.tarteaucitron?.user?.gtagMore === 'function') {
@@ -4278,10 +4278,10 @@ export const multiplegtag = {
         if (window.tarteaucitron?.user?.multiplegtagUa !== undefined) {
             window.tarteaucitron?.user?.multiplegtagUa.forEach(function (ua) {
                 window.tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + ua, '', function () {
-                    window.gtag = function gtag() { dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    var additional_config_info = (timeExpire !== undefined) ? {'anonymize_ip': true, 'cookie_expires': timeExpire / 1000} : {'anonymize_ip': true};
-                    gtag('config', ua, additional_config_info);
+                    window.gtag = function gtag() { window.dataLayer.push(arguments); }
+                    window.gtag('js', new Date());
+                    var additional_config_info = (window.timeExpire !== undefined) ? {'anonymize_ip': true, 'cookie_expires': window.timeExpire / 1000} : {'anonymize_ip': true};
+                    window.gtag('config', ua, additional_config_info);
                 });
             });
         }
