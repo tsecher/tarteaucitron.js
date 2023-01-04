@@ -4108,7 +4108,7 @@ export const linkedininsighttag = {
     "name": "Linkedin Insight",
     "uri": "https://www.linkedin.com/legal/cookie_policy",
     "needConsent": true,
-    "cookies": [],
+    "cookies": ['ln_or'],
     "js": function () {
         "use strict";
         if (window.tarteaucitron?.user?.linkedininsighttag !== undefined) {
