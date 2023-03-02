@@ -1410,10 +1410,7 @@ var tarteaucitron = {
 			tarteaucitron.userInterface.css(c + 'Icon', 'display', 'none');
 			tarteaucitron.userInterface.css(c + 'AlertBig', 'display', 'block');
 			tarteaucitron.userInterface.addClass(c + 'Root', 'tarteaucitronBeforeVisible');
-			const alertBigElement = document.getElementById('tarteaucitronAlertBig');
-			// Place focus in popup.
-			alertBigElement.click();
-			tarteaucitron.userInterface.focusTrap(alertBigElement);
+			tarteaucitron.userInterface.focusTrap(document.getElementById('tarteaucitronAlertBig'));
 
 			//ie compatibility
 			var tacOpenAlertEvent;
