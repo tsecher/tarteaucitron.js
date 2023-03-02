@@ -785,6 +785,11 @@ var tarteaucitron = {
 					if (tarteaucitron.events.load) {
 						tarteaucitron.events.load();
 					}
+
+					// Delete unused groups
+					document.querySelectorAll('.tarteaucitronBorder > ul > [id^="tarteaucitronServicesTitle_"]:not([style])').forEach(group => {
+						group.remove();
+					});
 				}, 500);
 
 			};
@@ -1285,7 +1290,7 @@ var tarteaucitron = {
 			if (document.getElementsByTagName('body')[0].classList !== undefined) {
 				document.getElementsByTagName('body')[0].classList.add('tarteaucitron-modal-open');
 			}
-			tarteaucitron.userInterface.focusTrap();
+			tarteaucitron.userInterface.focusTrap(document.getElementById('tarteaucitron'));
 			tarteaucitron.userInterface.jsSizing('main');
 
 			//ie compatibility
@@ -1358,7 +1363,7 @@ var tarteaucitron = {
 				window.dispatchEvent(tacClosePanelEvent);
 			}
 		},
-		"focusTrap": function () {
+		"focusTrap": function (trapElement) {
 			"use strict";
 
 			var focusableEls,
@@ -1366,7 +1371,7 @@ var tarteaucitron = {
 				lastFocusableEl,
 				filtered;
 
-			focusableEls = document.getElementById('tarteaucitron').querySelectorAll('a[href], button');
+			focusableEls = trapElement.querySelectorAll('a[href], button');
 			filtered = [];
 
 			// get only visible items
@@ -1380,8 +1385,7 @@ var tarteaucitron = {
 			lastFocusableEl = filtered[filtered.length - 1];
 
 			//loop focus inside tarteaucitron
-			document.getElementById('tarteaucitron').addEventListener("keydown", function (evt) {
-
+			trapElement.addEventListener("keydown", function (evt) {
 				if (evt.key === 'Tab' || evt.keyCode === 9) {
 
 					if (evt.shiftKey) /* shift + tab */ {
@@ -1406,6 +1410,10 @@ var tarteaucitron = {
 			tarteaucitron.userInterface.css(c + 'Icon', 'display', 'none');
 			tarteaucitron.userInterface.css(c + 'AlertBig', 'display', 'block');
 			tarteaucitron.userInterface.addClass(c + 'Root', 'tarteaucitronBeforeVisible');
+			const alertBigElement = document.getElementById('tarteaucitronAlertBig');
+			// Place focus in popup.
+			alertBigElement.click();
+			tarteaucitron.userInterface.focusTrap(alertBigElement);
 
 			//ie compatibility
 			var tacOpenAlertEvent;
