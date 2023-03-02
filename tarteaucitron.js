@@ -1672,35 +1672,15 @@ var tarteaucitron = {
 				}
 			}
 
-			var d = new Date(),
-				time = d.getTime(),
-				expireTime = time + window.timeExpire, // 365 days
-				regex = new RegExp("!" + key + "=(wait|true|false)", "g"),
-				cookie = tarteaucitron.cookie.read().replace(regex, ""),
-				value = tarteaucitron.parameters.cookieName + '=' + cookie + '!' + key + '=' + status,
-				domain = (tarteaucitron.parameters.cookieDomain !== undefined && tarteaucitron.parameters.cookieDomain !== '') ? '; domain=' + tarteaucitron.parameters.cookieDomain : '',
-				secure = location.protocol === 'https:' ? '; Secure' : '';
 
-			d.setTime(expireTime);
-			document.cookie = value + '; expires=' + d.toGMTString() + '; path=/' + domain + secure + '; samesite=lax';
+			var regex = new RegExp("!" + key + "=(wait|true|false)", "g"),
+				cookie = tarteaucitron.cookie.read().replace(regex, ""),
+				content = cookie + '!' + key + '=' + status;
+			localStorage && localStorage.setItem(tarteaucitron.parameters.cookieName, content);
 		},
 		"read": function () {
 			"use strict";
-			var nameEQ = tarteaucitron.parameters.cookieName + "=",
-				ca = document.cookie.split(';'),
-				i,
-				c;
-
-			for (i = 0; i < ca.length; i += 1) {
-				c = ca[i];
-				while (c.charAt(0) === ' ') {
-					c = c.substring(1, c.length);
-				}
-				if (c.indexOf(nameEQ) === 0) {
-					return c.substring(nameEQ.length, c.length);
-				}
-			}
-			return '';
+			return localStorage.getItem(tarteaucitron.parameters.cookieName) || '';
 		},
 		"purge": function (arr) {
 			"use strict";
