@@ -413,7 +413,7 @@ var tarteaucitron = {
 				}
 
 				if (tarteaucitron.parameters.highPrivacy && !tarteaucitron.parameters.AcceptAllCta) {
-					html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
+					html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '" aria-labelledby="tarteaucitronDisclaimerAlert" role="dialog" aria-modal="true" aria-live="polite">';
 					//html += '<div class="tarteaucitronAlertBigWrapper">';
 					html += '   <span id="tarteaucitronDisclaimerAlert">';
 					html += '       ' + tarteaucitron.lang.alertBigPrivacy;
@@ -433,7 +433,7 @@ var tarteaucitron = {
 					//html += '</div>';
 					html += '</div>';
 				} else {
-					html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
+					html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '" aria-labelledby="tarteaucitronDisclaimerAlert" role="dialog" aria-modal="true" aria-live="polite">';
 					//html += '<div class="tarteaucitronAlertBigWrapper">';
 					html += '   <span id="tarteaucitronDisclaimerAlert">';
 
@@ -610,7 +610,7 @@ var tarteaucitron = {
 				if (tarteaucitron.parameters.adblocker === true) {
 					setTimeout(function () {
 						if (window.tarteaucitronNoAdBlocker === false) {
-							html = '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + ' tarteaucitron-display-block" role="alert" aria-live="polite">';
+							html = '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + ' tarteaucitron-display-block" aria-live="polite" role="dialog" aria-modal="true" aria-labelledby="tarteaucitronDisclaimerAlert">';
 							html += '   <p id="tarteaucitronDisclaimerAlert">';
 							html += '       ' + tarteaucitron.lang.adblock + '<br/>';
 							html += '       <strong>' + tarteaucitron.lang.adblock_call + '</strong>';
