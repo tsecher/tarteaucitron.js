@@ -338,7 +338,7 @@ var tarteaucitron = {
 				html += '   <div id="tarteaucitronServices">';
 				html += '      <div class="tarteaucitronLine tarteaucitronMainLine" id="tarteaucitronMainLineOffset">';
 				html += '         <span class="tarteaucitronH1" role="heading" aria-level="1" id="dialogTitle">' + tarteaucitron.lang.title + '</span>';
-				html += '         <div id="tarteaucitronInfo">';
+				html += '         <div id="tarteaucitronInfo"><p>';
 				html += '         ' + tarteaucitron.lang.disclaimer;
 				if (tarteaucitron.parameters.privacyUrl !== "") {
 					html += '   <br/><br/>';
@@ -346,7 +346,7 @@ var tarteaucitron = {
 					html += '       ' + tarteaucitron.lang.privacyUrl;
 					html += '   </button>';
 				}
-				html += '         </div>';
+				html += '         </p></div>';
 				html += '         <div class="tarteaucitronName">';
 				html += '            <span class="tarteaucitronH2" role="heading" aria-level="2">' + tarteaucitron.lang.all + '</span>';
 				html += '         </div>';
